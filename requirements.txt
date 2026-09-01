@@ -1,22 +1,16 @@
+# Local demo/inference only — training runs separately in
+# notebooks/deepfake_training.ipynb on Colab (that notebook installs its own
+# deps in-session; see its markdown intro).
+
 # Core
 torch>=2.10
 torchvision>=0.21
 numpy>=1.26
 pillow>=10.3
 
-# CV / preprocessing
+# Grad-CAM overlay rendering (src/inference/predict.py's hand-rolled GradCAM,
+# mirroring the training notebook's implementation)
 opencv-python-headless>=4.9
-
-# Metrics
-scikit-learn>=1.4
-
-# Explainability
-grad-cam>=1.5
 
 # App
 streamlit>=1.38
-matplotlib>=3.8
-
-# Data acquisition (used by src/preprocessing/download_data.py, mainly run on Colab)
-kaggle>=1.6
-tqdm>=4.66
