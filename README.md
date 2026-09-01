@@ -24,17 +24,16 @@ dedicated GPU, so **training runs on Google Colab**, not locally:
 
 ## Running the training pipeline (Colab)
 
-1. In a browser, go to the [dataset page](https://www.kaggle.com/datasets/xhlulu/140k-real-and-fake-faces)
-   and click **Download** (needs a Kaggle account login — no API token needed).
-2. Upload the downloaded zip to your Google Drive.
-3. Upload `notebooks/deepfake_training.ipynb` to [Colab](https://colab.research.google.com)
+1. Upload `notebooks/deepfake_training.ipynb` to [Colab](https://colab.research.google.com)
    (File → Upload notebook), or open it directly from this GitHub repo.
-4. Runtime → Change runtime type → GPU (T4).
-5. In the "Get the Dataset" cell, update `DRIVE_ZIP_PATH` if your zip isn't at
-   the root of My Drive, then Runtime → Run all. It mounts Drive, extracts the
-   dataset onto the Colab VM's local disk, builds a stratified subset, trains,
-   evaluates, and generates Grad-CAM samples.
-6. The last cell zips `models/checkpoints/` and `reports/figures/` and
+2. Runtime → Change runtime type → GPU (T4).
+3. Runtime → Run all. The dataset cell uses `kagglehub.dataset_download(...)`,
+   which downloads straight to the Colab VM — no manual download, no Kaggle
+   credentials needed for this public dataset. (If it ever asks for auth, run
+   `kagglehub.login()` in a new cell and re-run.) The rest of the notebook
+   builds a stratified subset, trains, evaluates, and generates Grad-CAM
+   samples.
+4. The last cell zips `models/checkpoints/` and `reports/figures/` and
    downloads them through the browser — unzip into the same paths in your
    local clone.
 
